@@ -1,0 +1,7 @@
+Environment setup PATH:
+C:\Users\Ayon\AppData\Local\Android\Sdk\emulator
+
+
+Commands:
+	1. emulator -list-avds
+	2. emulator -avd avd_name
