@@ -1,0 +1,17 @@
+* Right click on drawable folder → New → choose Drawable resource file
+* Name btn_rounded
+* <?xml version="1.0" encoding="utf-8"?>
+	<shape xmlns:android="..." android:shape="rectangle">
+    		<solid android:color="#47D476"/>
+    		<corners android:radius="8dp"/>
+	</shape>
+
+
+* Apply like this
+
+<Button
+    android:id="@+id/my_rounded_sign_in_button"
+    android:layout_width="240dp"
+    android:layout_height="wrap_content"
+    android:text="Sign In"
+    android:background="@drawable/btn_rounded" />  //Here Added Rounded
