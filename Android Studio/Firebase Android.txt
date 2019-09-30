@@ -1,0 +1,11 @@
+-Firebase Realtime Database
+---Link
+https://www.youtube.com/watch?v=iy6WexahCdY&list=PLjMaHayx2gDG6bxZEoMuILMVv1Cv-6ua6
+
+---Retrieve with RecyclerView
+https://www.youtube.com/watch?v=vpObpZ5MYSE&t=633s
+
+
+-Firebase Cloud Firestore
+---Link
+https://www.youtube.com/playlist?list=PLrnPJCHvNZuBf5KH4XXOthtgo6E4Epjl8

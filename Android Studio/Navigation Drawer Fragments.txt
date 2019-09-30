@@ -1,0 +1,90 @@
+Steps ==>
+-Create a Navigation Drawer Activity
+
+-layout:
+-app_bar_main
+    -(this is the place where content_main is)
+-content_main
+    -code inside LinearLayout:
+    -with id: screen_area
+
+<FrameLayout
+        android:id="@+id/screen_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+-activity_main
+    -
+-menu
+    -activity_main_drawer
+        -Change for Drawer items
+
+
+-Java:
+-Create a Fragment java class and fragment_layout
+-Fragment Class:
+--Shortcut
+[for view.findViewById() change to view.findViewById() or getActivity().findViewById()]
+
+[-extends Fragment
+-override methods:
+    -onCreateView()
+        -return inflater.inflate(R.layout.fragment_import, null);
+    -onViewCreated()[it is actually like onCreate() method]]
+    -code:
+
+public class ImportFragment extends Fragment {
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_import, null);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView importText = view.findViewById(R.id.importText);
+
+        importText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(),"Welcome to NavDrawer", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+-MainActivity.java
+    -code:
+
+@Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        Fragment fragment = null;
+
+        if (id == R.id.nav_proximity) {
+            //fragment = new ImportFragment();
+            fragment = new ProximityFragment();
+        } else if (id == R.id.nav_accelerometer) {
+            fragment = new AccelerometerFragment();
+        } 
+
+        if(fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+
+            ft.replace(R.id.screen_area, fragment);
+            ft.commit();
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
+---Followed this youtube video:
+https://www.youtube.com/watch?v=J8GB_b8qyK8
