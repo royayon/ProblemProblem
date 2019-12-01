@@ -1,0 +1,21 @@
+https://www.professionaltutorial.com/
+
+https://www.professionaltutorial.com/install-macos-catalina-on-virtualbox-windows/
+
+download links:
+1. VM Extention Pack
+	- https://www.virtualbox.org/wiki/Downloads
+2. ISO image VirtualBOx
+	- https://drive.google.com/file/d/1WyvOqw1HOPyptEnhpwOdBHRu6lg5ek9H/view?usp=sharing
+
+
+code to modify:
+cd "C:\Program Files\Oracle\VirtualBox\"
+VBoxManage.exe modifyvm "Your VM Name" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
+VBoxManage setextradata "Your VM Name" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
+VBoxManage setextradata "Your VM Name" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+VBoxManage setextradata "Your VM Name" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+VBoxManage setextradata "Your VM Name" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+VBoxManage setextradata "Your VM Name" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+
+VBoxManage setextradata "MacOS Catalina" VBoxInternal2/EfiGraphicsResolution 1920x1080
