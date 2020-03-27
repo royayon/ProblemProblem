@@ -1,0 +1,72 @@
+
+/**
+ *
+ * @author Shouhag Roy
+ */
+public class MatrixChainMultiplication {
+
+    //public static int[] p = {10, 100, 5, 50};  //this example should return 7500, the optimal amount of multiplication operations for these matrices
+    public static int[] p = {30, 35, 15, 5, 10, 20, 25};  //should return 15125
+    protected static int m[][];
+    protected static int s[][];
+    protected static int n;
+
+    public static void main(String[] args) {
+
+        System.out.println("The array of matrices is: ");
+        System.out.print("{");
+        for (int i = 0; i < p.length; i++) {
+            System.out.print(p[i] + " ");
+        }
+        System.out.print("}");
+        System.out.println("");
+        System.out.println("");
+
+        System.out.println("The optimal parenthesization for those matrices costs: " + matrixChainOrder());
+        System.out.println();
+        printOptprintOptimalParensimalParens(s, 0, n - 1);
+    }
+
+    public static int matrixChainOrder() {
+        n = p.length;
+        m = new int[n][n];
+        s = new int[n][n];
+        for (int i = 1; i < n; i++) {
+            m[i][i] = 0;
+        }
+
+        // FOR THE STUDENTS TO CODE
+        //from Cormen Book page 375 Algo
+        for (int L = 2; L < n; L++) {
+            for (int i = 1; i < n - L + 1; i++) {
+                int j = i + L - 1;
+                if (j == n) {
+                    continue;
+                }
+                m[i][j] = 999999;
+                for (int k = i; k <= j - 1; k++) {
+                    int q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+                    if (q < m[i][j]) {
+                        m[i][j] = q;
+                        s[i][j] = k;
+                    }
+                }
+            }
+        }
+        return m[1][n - 1];
+    }
+
+    static void printOptprintOptimalParensimalParens(int[][] s, int i, int j) {
+        // FOR THE STUDENTS TO CODE
+        if (i == j) {
+            i++;
+            System.out.print(i);
+        } 
+        else {
+            System.out.print("(");
+            printOptprintOptimalParensimalParens(s, i, s[i][j]);
+            printOptprintOptimalParensimalParens(s, s[i][j] + 1, j);
+            System.out.print(")");
+        }
+    }
+}
